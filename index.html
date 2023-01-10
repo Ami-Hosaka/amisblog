@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Netlify Forms</title>
+        <meta name="robots" content="noindex" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" href="css/style.css" media="all" />
+    </head>
+
+    <body>
+        <div class="container">
+            <h1 class="title">お問い合わせ</h1>
+
+            <!--
+            スパム対策はhoneypot fieldを使う方法で実装
+            reCAPTCHA2を使う場合はnetlify-honeypot="bot-field"をdata-netlify-recaptcha="true"に変更
+            -->
+            <form name="contact" method="POST" action="/thanks.html" class="form" netlify-honeypot="bot-field" data-netlify="true">
+                <!--
+                Honeypot fieldのスパム判定用の隠しフィールド
+                reCAPTCHA2を使う場合は必要ない
+                -->
+                <input type="hidden" name="bot-field" />
+
+                <!-- テキスト -->
+                <div class="form-item">
+                    <span class="form-item-name">お名前</span>
+
+                    <div class="form-item-body">
+                        <div class="form-item-text">
+                            <input type="text" name="name" value="" class="m-form-text" required />
+                        </div>
+                    </div>
+                </div>
+                <!-- end テキスト -->
+
+                <!-- ラジオボタン -->
+                <div class="form-item">
+                    <span class="form-item-name">個人 / 法人</span>
+
+                    <div class="form-item-body">
+                        <div class="m-form-radio">
+                            <div class="">
+                                <label>
+                                    <input type="radio" name="customer-type" value="個人" required />
+                                    <span class="m-form-radio-name">
+                                        <span class="m-form-radio-text">個人</span>
+                                    </span>
+                                </label>
+                            </div>
+
+                            <div class="">
+                                <label>
+                                    <input type="radio" name="customer-type" value="法人" />
+                                    <span class="m-form-radio-name">
+                                        <span class="m-form-radio-text">法人</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end ラジオボタン -->
+
+                <!-- チェックボックス -->
+                <div class="form-item">
+                    <span class="form-item-name">ご依頼内容</span>
+
+                    <div class="form-item-body">
+                        <div class="m-form-checkbox">
+                            <div class="">
+                                <label>
+                                    <input type="checkbox" name="service-menu[]" value="ウェブサイト制作" />
+                                    <span class="m-form-checkbox-name">
+                                        <span class="m-form-checkbox-text">ウェブサイト制作</span>
+                                    </span>
+                                </label>
+                            </div>
+
+                            <div class="">
+                                <label>
+                                    <input type="checkbox" name="service-menu[]" value="ウェブサービス制作" />
+                                    <span class="m-form-checkbox-name">
+                                        <span class="m-form-checkbox-text">ウェブサービス制作</span>
+                                    </span>
+                                </label>
+                            </div>
+
+                            <div class="">
+                                <label>
+                                    <input type="checkbox" name="service-menu[]" value="グラフィックデザイン" />
+                                    <span class="m-form-checkbox-name">
+                                        <span class="m-form-checkbox-text">グラフィックデザイン</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end チェックボックス -->
+
+                <!-- セレクトボックス -->
+                <div class="form-item">
+                    <span class="form-item-name">ご希望納期</span>
+
+                    <div class="form-item-body">
+                        <div class="form-item-select">
+                            <div class="m-form-select">
+                                <select name="schedule[]" required>
+                                    <option value="" disabled selected>選択してください</option>
+                                    <option value="1ヶ月以内">1ヶ月以内</option>
+                                    <option value="2ヶ月以内">2ヶ月以内</option>
+                                    <option value="3ヶ月以内">3ヶ月以内</option>
+                                    <option value="未定">未定</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end セレクトボックス -->
+
+                <!-- テキストエリア -->
+                <div class="form-item">
+                    <span class="form-item-name">メッセージ</span>
+
+                    <div class="form-item-body">
+                        <div class="form-item-textarea">
+                            <textarea name="message" class="m-form-textarea" required></textarea>
+                        </div>
+                    </div>
+                </div>
+                <!-- end テキストエリア -->
+
+                <!--
+                reCAPTCHA2を使う場合に使う
+                honeypot fieldを使う場合は必要ない
+                -->
+                <!--
+                <div class="recaptcha-item">
+                    <div data-netlify-recaptcha="true"></div>
+                </div>
+                -->
+
+                <!-- 送信ボタン -->
+                <div class="m-btn-wrap">
+                    <input type="submit" name="" value="送信" class="m-btn" />
+                </div>
+                <!-- end 送信ボタン -->
+            </form>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/focus-visible@5.2.0/dist/focus-visible.min.js"></script>
+    </body>
+</html>
